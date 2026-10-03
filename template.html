@@ -17,6 +17,7 @@
 			--paragraph-spacing: $paragraph_spacing$;
 			--text-align: $if(justify)$justify$else$left$endif$;
 			--safe-area-top: env(safe-area-inset-top, 0px);
+			--page-turn-duration: $page_turn_duration$;
 		}
 
 		html, body {
@@ -59,6 +60,13 @@
 			column-width: calc(100vw - 2 * var(--side-margin));
 			column-gap: calc(2 * var(--side-margin));
 			column-fill: auto;
+			transition: translate var(--page-turn-duration) ease-out;
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			#speaking-script {
+				transition: none;
+			}
 		}
 
 		#speaking-script p, #speaking-script li, #speaking-script blockquote {
@@ -171,7 +179,11 @@
 				currentPageIdx = Math.floor((firstBlockCurrPage.offsetLeft + 1) / getPageWidth());
 			}
 			currentPageIdx = clampPageIdx(currentPageIdx);
+
+			speakingScriptEl.style.transition = "none";
 			renderCurrentPage();
+			speakingScriptEl.getBoundingClientRect(); // forces application
+			speakingScriptEl.style.transition = "";
 		}
 
 		function scheduleRecalculateLayout() {
