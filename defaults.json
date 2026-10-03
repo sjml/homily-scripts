@@ -1,0 +1,23 @@
+{
+	"pdf": {
+		"paper": "us-letter",
+		"font": "Libertinus Serif",
+		"font_size": "16pt",
+		"bottom_margin": "3in",
+		"justify": false,
+		"leading": "0.85em",
+		"paragraph_spacing": "2em"
+	},
+	"web": {
+		"font": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+		"font_size": "clamp(1.5rem, 5.2vw, 2.0rem)",
+		"top_margin": "5vh",
+		"bottom_margin": "35vh",
+		"side_margin": "6vw",
+		"justify": false,
+		"line_height": "1.45",
+		"paragraph_spacing": "0.9em",
+		"text_color": "#000",
+		"background_color": "#fff"
+	}
+}

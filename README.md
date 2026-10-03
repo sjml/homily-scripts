@@ -39,13 +39,15 @@ All the scripts are set up to be run directly from the parent directory, so you 
 
 * `new.py` --- Create a new empty homily; you'll be prompted to pick the date, and it will fill in appropriate metadata from the USCCB website. You can also specify a location or leave it blank to re-use the most recent one. 
 * `wc.py [homily_file]` --- Give a word count of a specific homily along with a time estimate based on preaching speed. You can pass `--watch` as a flag to have this run continuously and update whenever the file changes on disk. 
-* `render.py [homily_file]` --- Takes the Markdown file and generates a preaching script. (Large font, numbered pages, doesn't break paragraphs across pages, and has a very large bottom margin so you don't end up looking down too much. Check the Typst template for more details.)
+* `render.py [homily_file]` --- Takes the Markdown file and generates a preaching script. (Large font, numbered pages, doesn't break paragraphs across pages, and has a very large bottom margin so you don't end up looking down too much.)
+  * You can pass it a `--web` flag to have it generate a self-contained HTML file instead of a PDF. This is good for reading from a tablet. You tap the right 2/3 of the screen to advance and the left 1/3 to go back. (This is currently experimental.)
+    * You can either throw these on a web server or transfer them to an iOS device directly --- unfortunately Safari won't open files directly anymore (I get it, but boooo) so something like Sitecase is needed if you're not hosting them on an actual web server. Note the files are totally standalone, though, so are easy to sling wherever. 
+    * This has not been tested on Android, nor with any images or anything. YMMV.
 * `concat.py` --- Puts all the homilies together in chronological order in a single file. If you don't specify an output, it will print to stdout.
 
+If you have a file called `config.json` in the root of your preaching project, the value there can customize the output of the `render.py` script. You can see the values used if you specify nothing in [`defaults.json`](./defaults.json).
 
 ## TODOs
 * make preaching speed configurable for time estimations (right now it's just based on Shane's average speed)
-* make the Typst template more easily configurable
-* figure out some nice way of making tablet or phone output (maybe a self-contained HTML file?)
 * figure out and hopefully mitigate why the USCCB website sometimes blocks us
 * make an automated setup script for those who are comfortable piping curl to bash

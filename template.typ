@@ -11,8 +11,8 @@
 )
 
 #set page(
-	paper: "us-letter",
-	margin: (x: 1in, top: 1in, bottom: 3in),
+	paper: "$paper$",
+	margin: (x: 1in, top: 1in, bottom: $bottom_margin$),
 
 	header: context {
 		set text(size: 12pt)
@@ -43,18 +43,18 @@
 )
 
 #set text(
-	font: "Cambria",
+	font: "$font$",
 	lang: "en",
 	region: "US",
-	size: 16pt,
+	size: $font_size$,
 )
 
 #v(0.5in) // make room for first-page header
 
 #set par(
-	justify: false,
-	leading: .85em,
-	spacing: 2em,
+	justify: $if(justify)$true$else$false$endif$,
+	leading: $leading$,
+	spacing: $paragraph_spacing$,
 )
 #show par: it => block(
 	breakable: false,
