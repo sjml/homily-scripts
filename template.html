@@ -4,8 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-	<title>$if(title)$$title$$else$Homily$endif$</title>
-	<style>
+	<title>$if(date)$$date$$if(lectionary_string)$ — $lectionary_string$$endif$$elseif(lectionary_string)$$lectionary_string$$else$Homily$endif$$if(location)$ ($location$)$endif$</title>	<style>
 		:root {
 			--side-margin: $side_margin$;
 			--top-margin: $top_margin$;
@@ -17,6 +16,7 @@
 			--line-height: $line_height$;
 			--paragraph-spacing: $paragraph_spacing$;
 			--text-align: $if(justify)$justify$else$left$endif$;
+			--safe-area-top: env(safe-area-inset-top, 0px);
 		}
 
 		html, body {
@@ -54,8 +54,8 @@
 			position: relative;
 			margin-left: var(--side-margin);
 			margin-top: var(--top-margin);
-			width: calc(100vw - 2 * var(--side-margin));
 			height: calc(100dvh - var(--top-margin) - var(--bottom-margin));
+			width: calc(100vw - 2 * var(--side-margin));
 			column-width: calc(100vw - 2 * var(--side-margin));
 			column-gap: calc(2 * var(--side-margin));
 			column-fill: auto;
@@ -84,7 +84,7 @@
 		#page-counter {
 			position: fixed;
 			left: var(--side-margin);
-			top: calc(env(safe-area-inset-bottom, 0px));
+			top: calc(var(--safe-area-top) + 1vh);
 			font-size: 16px;
 			opacity: 0.45;
 			pointer-events: none;
