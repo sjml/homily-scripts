@@ -2,6 +2,8 @@
 
 A set of Python scripts that I use for managing my writing of homilies. If you're not comfortable with the command line or don't already know what Markdown is, this probably isn't for you. 
 
+You can see examples of how it outputs in the [PDF](./example/francis_chrism_mass.pdf) and [HTML](https://html-preview.github.io/?url=https://github.com/sjml/homily-scripts/blob/main/example/francis_chrism_mass.html) presentations of [Pope Francis's first Chrism Mass homily](https://www.vatican.va/content/francesco/en/homilies/2013/documents/papa-francesco_20130328_messa-crismale.html?utm_source=chatgpt.com). (Note the HTML is meant to be viewed on a tablet.)
+
 ## Installation
 
 Only tested/used on a Mac; would probably work on Linux, too? I've run it on Windows and fixed some obvious things to make it work there, but not doing ongoing maintenance of it. 
