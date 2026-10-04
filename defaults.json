@@ -12,7 +12,7 @@
 		"font": "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
 		"font_size": "clamp(1.5rem, 5.2vw, 2.0rem)",
 		"top_margin": "5vh",
-		"bottom_margin": "35vh",
+		"bottom_margin": "10vh",
 		"side_margin": "6vw",
 		"justify": false,
 		"line_height": "1.45",
