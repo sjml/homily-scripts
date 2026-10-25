@@ -105,6 +105,10 @@
 			opacity: 0.2;
 		}
 
+		.force-column-break {
+			break-before: column;
+		}
+
 		#fin-marker::before,
 		#fin-marker::after {
 			content: "";
@@ -172,7 +176,29 @@
 		}
 
 		function recalculateLayout() {
+			const finMarker = document.getElementById("fin-marker");
+			const children = Array.from(speakingScriptEl.children).filter(el => el !== finMarker && el.id !== "reading-info");
+			const lastBlock = children[children.length - 1];
+
+			if (lastBlock) {
+				lastBlock.classList.remove("force-column-break");
+			}
+
 			measureTotalPages();
+
+			// check if fin-marker ended up orphaned
+			if (lastBlock && finMarker) {
+				const pageWidth = getPageWidth();
+				const paragraphPage = Math.floor(lastBlock.offsetLeft / pageWidth);
+				const markerPage = Math.floor(finMarker.offsetLeft / pageWidth);
+
+				if (markerPage > paragraphPage) {
+					// orphaned! force the final paragraph to join it
+					lastBlock.classList.add("force-column-break");
+					measureTotalPages(); // re-measure w/new break
+				}
+			}
+
 			if (firstBlockCurrPage) {
 				currentPageIdx = Math.floor((firstBlockCurrPage.offsetLeft + 1) / getPageWidth());
 			}
